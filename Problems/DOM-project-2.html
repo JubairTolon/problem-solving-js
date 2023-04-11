@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- global font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>quots</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+            color: white;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1597839219216-a773cb2473e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .container {
+            width: 550px;
+            height: 450px;
+        }
+
+        #open-btn {
+            position: absolute;
+            padding: 10px 20px 10px 20px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: transparent;
+            border: 2px solid wheat;
+            top: 70%;
+            left: 10%;
+            transition: .5s;
+        }
+
+        #open-btn:hover {
+            background-color: aliceblue;
+            color: black;
+        }
+
+        #modal {
+            background-color: aliceblue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: black;
+            display: flex;
+            column-gap: 20px;
+            font-size: 1.5rem;
+
+            animation-name: animateModal;
+            animation-duration: .4s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #modal-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, .2);
+        }
+
+        #modal p,
+        div {
+            color: black;
+        }
+
+        #close-btn {
+            cursor: pointer;
+            font-size: 3rem;
+        }
+
+        #close-btn:hover {
+            color: red;
+        }
+
+        /* modal animation */
+        @keyframes animateModal {
+            from {
+                top: -300px;
+                opacity: 0;
+            }
+
+            to {
+                top: 50%;
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <button id="open-btn">Where's Our Modal?</button>
+        <div id="modal-container">
+            <div id="modal">
+                <p>Here I am!</p>
+                <div id="close-btn">&times;</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let openBtn = document.getElementById('open-btn');
+        let modalContainer = document.getElementById('modal-container');
+        let closeBtn = document.getElementById('close-btn');
+
+        // event listener
+
+        openBtn.addEventListener('click', function () {
+            modalContainer.style.display = 'block';
+        })
+        closeBtn.addEventListener('click', function () {
+            modalContainer.style.display = 'none';
+        })
+        window.addEventListener('click', function (e) {
+            if (e.target === modalContainer) {
+                modalContainer.style.display = 'none';
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- global font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>To-do</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+            color: black;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1597839219216-a773cb2473e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80') no-repeat center center/cover;
+            position: relative;
+        }
+
+        #add-task-container {
+            width: 350px;
+            padding: 30px;
+            background-color: aliceblue;
+            border-radius: 8px;
+
+            display: flex;
+        }
+
+        input {
+            flex: 5;
+            margin-right: 10px;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+
+        #add-task {
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #add-task:hover {
+            background: lightgreen;
+        }
+
+        #add-task:active {
+            background: lightgreen;
+        }
+
+        .task {
+            display: flex;
+            list-style: none;
+            background-color: aliceblue;
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .task li {
+            background-color: cornflowerblue;
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            margin-right: 50px;
+            width: 60%;
+        }
+
+        .check-task {
+            padding: 0 15px;
+            background-color: lightgreen;
+            border: none;
+            border-radius: 5px;
+            margin-right: 8px;
+            cursor: pointer;
+        }
+
+        .delete-task {
+            padding: 0 10px;
+            background-color: lightgreen;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: lightcoral;
+            padding: 0 15px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="add-task-container">
+            <input type="text" placeholder="Enter task" id="input-task">
+            <button id="add-task"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <div id="task-container">
+
+        </div>
+    </div>
+
+    <script>
+        const addTask = document.getElementById('add-task');
+        const taskContainer = document.getElementById('task-container');
+        const inputTask = document.getElementById('input-task');
+        console.log(inputTask);
+
+        addTask.addEventListener('click', function () {
+            let task = document.createElement('div');
+            task.classList.add('task');
+
+            let li = document.createElement('li');
+            li.innerText = `${inputTask.value}`;
+            task.appendChild(li);
+
+            let checkButton = document.createElement('button');
+            checkButton.innerHTML = '<i class= "fa-solid fa-check"></i>';
+            checkButton.classList.add('check-task');
+            task.appendChild(checkButton);
+
+            let deleteButton = document.createElement('button');
+            deleteButton.innerHTML = '<i class= "fa-solid fa-trash-can"></i>';
+            deleteButton.classList.add('delete-task');
+            task.appendChild(deleteButton);
+
+            if (inputTask.value === "") {
+                alert('Enter a task')
+            } else {
+                taskContainer.appendChild(task);
+            }
+
+            inputTask.value = "";
+
+            checkButton.addEventListener('click', function () {
+                checkButton.parentElement.style.textDecoration = 'line-through';
+            })
+            deleteButton.addEventListener('click', function (e) {
+                let target = e.target;
+                console.log(target);
+                target.parentElement.parentElement.remove();
+            })
+        })
+    </script>
+</body>
+
+</html>
