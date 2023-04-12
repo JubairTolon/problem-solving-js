@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* .card {
+            display: flex;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+
+    <script>
+        const cars = ["BMW", "Volvo", "Mini"];
+
+        let text = "";
+        for (let x of cars) {
+            text += x;
+        }
+
+        const numbers = [45, 4, 9, 16, 25];
+
+        let txt = "";
+        for (let x in numbers) {
+            txt += numbers[x];
+        }
+
+
+
+        const container = document.getElementById('container');
+        let employee
+        fetch('employee.json').then(data => data.json()).then(data => {
+            let card = ''
+            for (let person of data) {
+                card += `<div>
+                    <h1>${person.firstName}</h1>
+                    <P>${person.lastName}</P>
+                </div>`;
+
+            }
+            container.insertAdjacentHTML('afterbegin', card);
+        })
+
+
+
+        // const obj = JSON.parse(data);
+        // const obj2 = JSON.stringify(e);
+        // console.log(obj);
+        // console.log(obj2);
+
+        // const p = document.getElementById('pera');
+        // p.insertAdjacentHTML('beforebegin', '<p>HTML</p>');
+        // p.insertAdjacentHTML('beforeend', '<strong>HTML</strong>');
+        // p.insertAdjacentHTML('afterend', '<p>HTML</p>');
+
+    </script>
+</body>
+
+</html>
