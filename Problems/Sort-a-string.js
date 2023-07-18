@@ -23,5 +23,4 @@ console.log(sortString(sample1));
 
 //using es6
 const sortedWord = [...sample1].sort().join('');
-console.log(sortedWord)
-let sample2 = 'This is Jubair from bangladesh and I love this country';
+console.log(sortedWord);

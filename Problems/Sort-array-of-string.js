@@ -13,7 +13,7 @@ function sort(data) {
             }
         }
     }
-    return data
+    return data;
 }
 
 console.log(sort(array));
