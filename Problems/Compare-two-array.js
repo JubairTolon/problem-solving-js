@@ -8,4 +8,4 @@ const is__same = array1.length === array2.length &&
         }
     })
 
-console.log(is__same)
+console.log(is__same);
