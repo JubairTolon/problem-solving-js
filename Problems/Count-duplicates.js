@@ -25,28 +25,22 @@ function findSimilar(sample) {
 
 console.log(findSimilar(array));
 
-//using forEach
-const myArray = ['a', 'b', 'c', 'c', 'b', 'd'];
+//using forEach()
 const elementCounts = {};
-myArray.forEach(element => {
+array.forEach(element => {
     elementCounts[element] = (elementCounts[element] || 0) + 1;
 });
 console.log(elementCounts);
 
 
-
-
-//using forEach
+//using reduce()
 const fruitBasket = ['banana', 'cherry', 'orange', 'apple', 'cherry', 'orange', 'apple', 'banana', 'cherry', 'orange', 'fig'];
 
-const count = fruitBasket.reduce((tally, fruit) => {
-    tally[fruit] = (tally[fruit] || 0) + 1;
-    return tally;
-}, {})
+const count = fruitBasket.reduce((tempStorage, fruit) => {
+    tempStorage[fruit] = (tempStorage[fruit] || 0) + 1;
+    return tempStorage;
+}, {});
 
-const myArray1 = ['a', 'b', 'c', 'c', 'b', 'd'];
-var elementCounts1 = myArray1.reduce((count, item) => (count[item] = count[item] + 1 || 1, count), {});
-console.log(elementCounts1);
 
 /********Delete duplicate element from an array************/
 
